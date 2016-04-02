@@ -20,22 +20,37 @@
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define('DB_NAME', 'wp');
 
-/** MySQL database username */
-define('DB_USER', 'wp');
 
-/** MySQL database password */
-define('DB_PASSWORD', 'localhost');
 
-/** MySQL hostname */
-define('DB_HOST', '127.0.0.1:3306');
+if(isset($_ENV[`DATABASE_URL`])) {
+          $db = parse_url($_ENV[`DATABASE_URL`]);
+          define('DB_NAME', trim($db[`path`],`/`));
+          define('DB_USER', $db[`user`]);
+          define('DB_PASSWORD', $db[`pass`]);
+          define('DB_HOST', $db[`host`]);
+          define('DB_CHARSET', 'utf8');
+          define('DB_COLLATE', '');
+      } else {
+          //echo('Using Local DB Database credentials!');
+          define('DB_NAME', 'wp');
 
-/** Database Charset to use in creating database tables. */
-define('DB_CHARSET', 'utf8');
+          /** MySQL database username */
+          define('DB_USER', 'wp');
 
-/** The Database Collate type. Don't change this if in doubt. */
-define('DB_COLLATE', '');
+          /** MySQL database password */
+          define('DB_PASSWORD', 'localhost');
+
+          /** MySQL hostname */
+          define('DB_HOST', '127.0.0.1:3306');
+
+          /** Database Charset to use in creating database tables. */
+          define('DB_CHARSET', 'utf8');
+
+          /** The Database Collate type. Don't change this if in doubt. */
+          define('DB_COLLATE', '');
+      }
+
 
 /**#@+
  * Authentication Unique Keys and Salts.
