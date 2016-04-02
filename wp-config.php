@@ -35,19 +35,19 @@ if(isset($_ENV[`DATABASE_URL`])) {
           //echo('Using Local DB Database credentials!');
           define('DB_NAME', 'wp');
 
-          /** MySQL database username */
+          //MySQL database username
           define('DB_USER', 'wp');
 
-          /** MySQL database password */
+          // MySQL database password
           define('DB_PASSWORD', 'localhost');
 
-          /** MySQL hostname */
+          // MySQL hostname
           define('DB_HOST', '127.0.0.1:3306');
 
-          /** Database Charset to use in creating database tables. */
+          // Database Charset to use in creating database tables.
           define('DB_CHARSET', 'utf8');
 
-          /** The Database Collate type. Don't change this if in doubt. */
+          //The Database Collate type. Don't change this if in doubt.
           define('DB_COLLATE', '');
       }
 */
